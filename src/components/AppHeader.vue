@@ -14,11 +14,11 @@
 				/>
 				<button
 					v-if="inputQuery.length"
-					class="absolute end-3 inset-y-4 flex items-center justify-center"
+					class="absolute end-2 inset-y-3 p-1 flex items-center justify-center dark:text-white dark:hover:text-white/80 text-black/80 hover:text-black/60"
 					type="button"
 					@click="clear"
 				>
-					<SearchX class="size-6 cursor-pointer dark:text-white text-black/80" />
+					<SearchX class="size-6 cursor-pointer text-inherit" />
 				</button>
 			</div>
 			<UiButton
