@@ -9,15 +9,13 @@ export const columns: ColumnDef<Photo>[] = [
 	{
 		accessorKey: 'id',
 		header: ({ column }) => {
-			const isSorted = column.getIsSorted() === 'desc';
-
 			return h(
 				Button,
 				{
-					variant: isSorted ? 'brand' : 'ghost',
+					variant: column.getIsSorted() ? 'brand' : 'ghost',
 					size: 'xs',
 					class: 'px-2',
-					onClick: () => column.toggleSorting(column.getIsSorted() === 'asc'),
+					onClick: () => column.toggleSorting(),
 				},
 				() => ['Ид', h(ArrowUpDown, { class: 'h-4 w-4' })],
 			);
@@ -29,15 +27,13 @@ export const columns: ColumnDef<Photo>[] = [
 	{
 		accessorKey: 'albumId',
 		header: ({ column }) => {
-			const isSorted = column.getIsSorted() === 'desc';
-
 			return h(
 				Button,
 				{
-					variant: isSorted ? 'brand' : 'ghost',
+					variant: column.getIsSorted() ? 'brand' : 'ghost',
 					size: 'xs',
 					class: 'px-2',
-					onClick: () => column.toggleSorting(column.getIsSorted() === 'asc'),
+					onClick: () => column.toggleSorting(),
 				},
 				() => ['Альбом', h(ArrowUpDown, { class: 'h-4 w-4' })],
 			);
@@ -49,21 +45,22 @@ export const columns: ColumnDef<Photo>[] = [
 	{
 		accessorKey: 'title',
 		header: ({ column }) => {
-			const isSorted = column.getIsSorted() === 'desc';
-
 			return h(
 				Button,
 				{
-					variant: isSorted ? 'brand' : 'ghost',
+					variant: column.getIsSorted() ? 'brand' : 'ghost',
 					size: 'xs',
 					class: 'px-2',
-					onClick: () => column.toggleSorting(column.getIsSorted() === 'asc'),
+					onClick: () => column.toggleSorting(),
 				},
 				() => ['Название', h(ArrowUpDown, { class: 'h-4 w-4' })],
 			);
 		},
 		cell: ({ row }) => {
 			return h(ContentTooltip, { text: row.original.title, class: 'max-w-[120px]' });
+		},
+		sortingFn: (a, b) => {
+			return a.original.title.toLowerCase().localeCompare(b.original.title.toLowerCase());
 		},
 	},
 	{

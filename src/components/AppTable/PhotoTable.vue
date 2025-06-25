@@ -96,6 +96,7 @@ const table = useVueTable({
 			return sorting.value;
 		},
 	},
+	enableSortingRemoval: false,
 });
 
 const moreFetchTriggerRef = ref<HTMLDivElement | null>(null);
